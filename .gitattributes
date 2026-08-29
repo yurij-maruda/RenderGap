@@ -1,0 +1,63 @@
+# ---------------------------------------------------------------------------
+# Line endings
+# ---------------------------------------------------------------------------
+* text=auto eol=lf
+
+*.bat   text eol=crlf
+*.bat.example text eol=crlf
+*.ps1   text eol=crlf
+*.sh    text eol=lf
+
+# USDA is the source of truth for scene composition. It MUST stay a diffable
+# text file -- never LFS, never CRLF. A reviewer reading the repo on GitHub
+# should see the layer structure, not a pointer file.
+*.usda  text eol=lf diff
+
+# ---------------------------------------------------------------------------
+# Git LFS
+# ---------------------------------------------------------------------------
+# Binary USD. Note the deliberate asymmetry with *.usda above: crate-encoded
+# USD is opaque to diff and often large, so it belongs in LFS. Vendored NVIDIA
+# assets under isaac/_assets/ are gitignored entirely and never reach LFS --
+# these rules exist for the small number of binary USDs we may author or vendor
+# on purpose later.
+*.usd   filter=lfs diff=lfs merge=lfs -text
+*.usdc  filter=lfs diff=lfs merge=lfs -text
+*.usdz  filter=lfs diff=lfs merge=lfs -text
+
+# Textures
+*.png   filter=lfs diff=lfs merge=lfs -text
+*.jpg   filter=lfs diff=lfs merge=lfs -text
+*.jpeg  filter=lfs diff=lfs merge=lfs -text
+*.tga   filter=lfs diff=lfs merge=lfs -text
+*.dds   filter=lfs diff=lfs merge=lfs -text
+*.exr   filter=lfs diff=lfs merge=lfs -text
+*.hdr   filter=lfs diff=lfs merge=lfs -text
+*.ktx   filter=lfs diff=lfs merge=lfs -text
+*.ktx2  filter=lfs diff=lfs merge=lfs -text
+
+# Figures and comparison media for the README
+*.gif   filter=lfs diff=lfs merge=lfs -text
+*.mp4   filter=lfs diff=lfs merge=lfs -text
+*.webm  filter=lfs diff=lfs merge=lfs -text
+*.pdf   filter=lfs diff=lfs merge=lfs -text
+
+# Unreal binary content
+*.uasset filter=lfs diff=lfs merge=lfs -text
+*.umap   filter=lfs diff=lfs merge=lfs -text
+*.ubulk  filter=lfs diff=lfs merge=lfs -text
+*.uexp   filter=lfs diff=lfs merge=lfs -text
+
+# Model weights and archives
+*.pt    filter=lfs diff=lfs merge=lfs -text
+*.pth   filter=lfs diff=lfs merge=lfs -text
+*.onnx  filter=lfs diff=lfs merge=lfs -text
+*.npz   filter=lfs diff=lfs merge=lfs -text
+*.zip   filter=lfs diff=lfs merge=lfs -text
+
+# ---------------------------------------------------------------------------
+# Unreal text formats that must not be normalised
+# ---------------------------------------------------------------------------
+*.uproject      text eol=lf
+*.uplugin       text eol=lf
+Config/*.ini    text eol=crlf

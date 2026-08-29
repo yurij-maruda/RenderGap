@@ -1,0 +1,89 @@
+# ---------------------------------------------------------------------------
+# Vendored NVIDIA assets
+# ---------------------------------------------------------------------------
+# The collected dependency closure of warehouse_multiple_shelves.usd and
+# Nova_Carter_ROS.usd. Excluded for two independent reasons: size (SimReady
+# 4K PBR textures) and NVIDIA's asset licence, which does not clearly permit
+# redistribution from a public repo. Reproduced by:
+#     env\rg-python.bat isaac\tools\collect_assets.py
+# Integrity is tracked by isaac/_assets/manifest.sha256, which IS committed.
+isaac/_assets/*
+!isaac/_assets/.gitkeep
+!isaac/_assets/manifest.sha256
+
+# ---------------------------------------------------------------------------
+# Generated scene layers
+# ---------------------------------------------------------------------------
+# Rule: a layer is committed if and only if its content is identical on every
+# run. Per-seed and per-trajectory layers are reproducible from a seed, so they
+# are outputs, not sources.
+isaac/scene/props_seed_*.usda
+isaac/scene/traj_*.usda
+
+# ---------------------------------------------------------------------------
+# Render output and datasets
+# ---------------------------------------------------------------------------
+data/*
+!data/.gitkeep
+!data/warehouse_payload
+*.coco.json
+!analysis/**/*.coco.json
+
+analysis/debug/*
+results/*
+
+
+# ---------------------------------------------------------------------------
+# Machine-local configuration
+# ---------------------------------------------------------------------------
+env/local.bat
+env/local.ps1
+env/local.sh
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.usdvenv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Unreal Engine
+# ---------------------------------------------------------------------------
+unreal_rendergap/Binaries/
+unreal_rendergap/Build/
+unreal_rendergap/DerivedDataCache/
+unreal_rendergap/Intermediate/
+unreal_rendergap/Saved/
+unreal_rendergap/Content/UsdAssets/
+unreal_rendergap/Content/UsdAssetCache.uasset
+unreal_rendergap/.vs/
+unreal_rendergap/*.sln
+unreal_rendergap/*.suo
+unreal_rendergap/*.xcodeproj
+unreal_rendergap/Plugins/**/Binaries/
+unreal_rendergap/Plugins/**/Intermediate/
+
+# ---------------------------------------------------------------------------
+# Isaac Sim / Kit runtime droppings
+# ---------------------------------------------------------------------------
+*.kit.log
+logs/
+.thumbs/
+omni.*.log
+
+# ---------------------------------------------------------------------------
+# Editors and OS
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/settings.json.example
+Thumbs.db
+desktop.ini
+.DS_Store
+.run/*
