@@ -39,7 +39,7 @@ if not exist "%OUTDIR%\*.exr" (
     echo [rendergap] The engine exited cleanly but wrote no frame to:
     echo [rendergap]   %OUTDIR%
     echo [rendergap] Check that /Game/Bench/%CONDITION% exists -- run
-    echo [rendergap]   env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\setup_bench.py
+    echo [rendergap]   env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\setup_bench.py"
     echo [rendergap] and search the log above for "LogMovieRenderPipeline".
     exit /b 1
 )

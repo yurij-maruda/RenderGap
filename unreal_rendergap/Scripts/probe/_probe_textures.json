@@ -12,7 +12,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxA_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxA_D.png"
   },
   {
     "texture": "T_CardBoxA_N",
@@ -27,7 +27,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxA_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxA_N.png"
   },
   {
     "texture": "T_CardBoxA_ORM",
@@ -42,7 +42,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxA_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxA_ORM.png"
   },
   {
     "texture": "T_CardBoxD_D",
@@ -57,7 +57,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxD_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxD_D.png"
   },
   {
     "texture": "T_CardBoxD_N",
@@ -72,7 +72,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxD_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxD_N.png"
   },
   {
     "texture": "T_CardBoxD_ORM",
@@ -87,7 +87,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxD_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CardBoxD_ORM.png"
   },
   {
     "texture": "T_CratePlastic_A_D",
@@ -102,7 +102,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_A_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_A_D.png"
   },
   {
     "texture": "T_CratePlastic_A_N",
@@ -117,7 +117,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_A_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_A_N.png"
   },
   {
     "texture": "T_CratePlastic_A_ORM",
@@ -132,7 +132,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_A_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_A_ORM.png"
   },
   {
     "texture": "T_CratePlastic_B_D",
@@ -147,7 +147,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_B_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_B_D.png"
   },
   {
     "texture": "T_CratePlastic_B_N",
@@ -162,7 +162,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_B_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_B_N.png"
   },
   {
     "texture": "T_CratePlastic_B_ORM",
@@ -177,7 +177,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_B_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_B_ORM.png"
   },
   {
     "texture": "T_CratePlastic_C_D",
@@ -192,7 +192,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_C_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_C_D.png"
   },
   {
     "texture": "T_CratePlastic_C_N",
@@ -207,7 +207,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_C_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_C_N.png"
   },
   {
     "texture": "T_CratePlastic_C_ORM",
@@ -222,7 +222,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_C_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_CratePlastic_C_ORM.png"
   },
   {
     "texture": "T_FloorStripes_D",
@@ -237,7 +237,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_D.png"
   },
   {
     "texture": "T_FloorStripes_M",
@@ -252,7 +252,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_M.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_M.png"
   },
   {
     "texture": "T_FloorStripes_N",
@@ -267,7 +267,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_N.png"
   },
   {
     "texture": "T_FloorStripes_ORM",
@@ -282,7 +282,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_FloorStripes_ORM.png"
   },
   {
     "texture": "T_Floor_01_D",
@@ -297,7 +297,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_Floor_01_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_Floor_01_D.png"
   },
   {
     "texture": "T_Floor_01_N",
@@ -312,7 +312,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_Floor_01_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_Floor_01_N.png"
   },
   {
     "texture": "T_Floor_01_ORM",
@@ -327,7 +327,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_Floor_01_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_Floor_01_ORM.png"
   },
   {
     "texture": "T_PaletteA_01_D",
@@ -342,7 +342,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_PaletteA_01_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_PaletteA_01_D.png"
   },
   {
     "texture": "T_PaletteA_01_N",
@@ -357,7 +357,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_PaletteA_01_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_PaletteA_01_N.png"
   },
   {
     "texture": "T_PaletteA_01_ORM",
@@ -372,7 +372,7 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_PaletteA_01_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_PaletteA_01_ORM.png"
   },
   {
     "texture": "T_WallA_01_D",
@@ -387,7 +387,7 @@
     ],
     "srgb": true,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_WallA_01_D.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_WallA_01_D.png"
   },
   {
     "texture": "T_WallA_01_N",
@@ -402,7 +402,7 @@
     ],
     "srgb": false,
     "compression": "TC_NORMALMAP: 1>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_WallA_01_N.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_WallA_01_N.png"
   },
   {
     "texture": "T_WallA_01_ORM",
@@ -417,6 +417,6 @@
     ],
     "srgb": false,
     "compression": "TC_DEFAULT: 0>",
-    "source": "C:\\work\\SyntheticData\\rendergap\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_WallA_01_ORM.png"
+    "source": "C:\\work\\SyntheticData\\RenderGap_repo\\data\\warehouse_source\\Isaac\\Environments\\Simple_Warehouse\\Materials\\Textures\\T_WallA_01_ORM.png"
   }
 ]

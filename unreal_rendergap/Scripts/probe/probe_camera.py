@@ -1,6 +1,6 @@
 r"""Read back what Unreal actually made of the USD bench camera.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\probe\probe_camera.py
+    env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\probe\probe_camera.py"
 
 Loads L_UsdWarehouse, finds the AUsdStageActor, asks it for the component it
 generated for the camera prim, and compares every value against the USD the

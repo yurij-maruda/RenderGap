@@ -9,7 +9,7 @@
       "occlusion": "tex:T_CardBoxA_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_CardBoxA",
+      "asset": "MI_CardBoxA1",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_CardBoxA_D1",
@@ -106,7 +106,7 @@
       "occlusion": "tex:T_CardBoxD_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_CardBoxD",
+      "asset": "MI_CardBoxD1",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_CardBoxD_D1",
@@ -203,7 +203,7 @@
       "occlusion": "tex:T_CratePlastic_A_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_CratePlasticA_03",
+      "asset": "MI_CratePlasticA_04",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_CratePlastic_A_D1",
@@ -300,7 +300,7 @@
       "occlusion": "tex:T_CratePlastic_B_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_CratePlasticB_06",
+      "asset": "MI_CratePlasticB_07",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_CratePlastic_B_D1",
@@ -397,7 +397,7 @@
       "occlusion": "tex:T_CratePlastic_C_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_CratePlasticC_05",
+      "asset": "MI_CratePlasticC_06",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_CratePlastic_C_D1",
@@ -494,7 +494,7 @@
       "occlusion": "tex:T_Floor_01_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_Floor_01",
+      "asset": "MI_Floor_02",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_Floor_01_D1",
@@ -591,7 +591,7 @@
       "occlusion": "tex:T_PaletteA_01_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_PaletteSmallA_01",
+      "asset": "MI_PaletteSmallA_02",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_PaletteA_01_D1",
@@ -688,7 +688,7 @@
       "occlusion": "tex:T_WallA_01_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_WallA_01",
+      "asset": "MI_WallA_02",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_WallA_01_D1",
@@ -786,7 +786,7 @@
       "occlusion": "tex:T_FloorStripes_ORM.png@"
     },
     "unreal": {
-      "asset": "MI_M_FloorStripes_01",
+      "asset": "MI_M_FloorStripes_02",
       "class": "MaterialInstanceConstant",
       "textures": {
         "BaseColorTexture": "T_FloorStripes_D1",

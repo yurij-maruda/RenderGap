@@ -8,16 +8,16 @@
       10.0
     ],
     "area_m2": 40.0,
-    "unreal_intensity": 47123.88671875,
+    "unreal_intensity": 942477.75,
     "unreal_units": "<LightUnits.LUMENS: 2>",
     "unreal_source_cm": [
       400.0,
       1000.0
     ],
     "attenuation_radius_cm": 4001.0,
-    "unreal_brightness": 149999990.1798316,
+    "unreal_brightness": 2999999853.3325515,
     "isaac_equivalent_brightness": 150000000.0,
-    "predicted_isaac_over_unreal": 1.0000000654677936
+    "predicted_isaac_over_unreal": 0.0500000024444576
   },
   {
     "prim": "/World/warehouse_multiple_shelves/RectLight_02",
@@ -28,15 +28,15 @@
       10.0
     ],
     "area_m2": 40.0,
-    "unreal_intensity": 47123.88671875,
+    "unreal_intensity": 942477.75,
     "unreal_units": "<LightUnits.LUMENS: 2>",
     "unreal_source_cm": [
       400.0,
       1000.0
     ],
     "attenuation_radius_cm": 4001.0,
-    "unreal_brightness": 149999990.1798316,
+    "unreal_brightness": 2999999853.3325515,
     "isaac_equivalent_brightness": 150000000.0,
-    "predicted_isaac_over_unreal": 1.0000000654677936
+    "predicted_isaac_over_unreal": 0.0500000024444576
   }
 ]

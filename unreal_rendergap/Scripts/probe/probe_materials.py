@@ -1,6 +1,6 @@
 r"""Compare what the USD materials say against what Unreal actually built.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\probe\probe_materials.py
+    env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\probe\probe_materials.py"
 
 With camera, exposure and light intensity matched, the residual difference between
 the two engines is material. Three effects were measured on the rendered pair

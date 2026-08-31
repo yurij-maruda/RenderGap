@@ -1,6 +1,6 @@
 r"""Create the Movie Render Queue assets for the bench frame. Run once.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\setup_bench.py
+    env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\setup_bench.py"
 
 Creates, under /Game/Bench:
 

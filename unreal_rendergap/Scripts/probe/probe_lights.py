@@ -1,6 +1,6 @@
 r"""What did the rect lights actually become in Unreal, and what does that predict?
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\probe\probe_lights.py
+    env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\probe\probe_lights.py"
 
 analysis/compare_frame.py measures a brightness ratio between the two engines.
 This says how much of it the lights are responsible for, analytically, so the

@@ -1,6 +1,6 @@
 r"""Compare the textures Unreal imported against the PNGs Isaac samples directly.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\probe\probe_textures.py
+    env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\probe\probe_textures.py"
 
 probe_materials.py established that the material GRAPH transfers intact --
 normal, roughness, metallic and AO are all wired in Unreal exactly as the

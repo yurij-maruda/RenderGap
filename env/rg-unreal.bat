@@ -2,7 +2,7 @@
 :: ---------------------------------------------------------------------------
 :: Run UnrealEditor-Cmd against the repo's project, headless.
 ::
-::     env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\setup_bench.py
+::     env\rg-unreal.bat -run=pythonscript -script="unreal_rendergap\Scripts\setup_bench.py"
 ::     env\rg-unreal.bat L_UsdWarehouse -game -MoviePipelineConfig=...
 ::
 :: The project path and -unattended/-nosplash are supplied here so no caller has
@@ -27,6 +27,16 @@ if not exist "%UE_CMD%" (
 
 set "RENDERGAP_ROOT=%REPO%"
 set "UPROJECT=%REPO%\unreal_rendergap\unreal_rendergap.uproject"
+
+set "UE_PYTHONPATH=%REPO%;%REPO%\unreal_rendergap\Scripts;%UE_PYTHONPATH%"
+
+set "ALLARGS=%*"
+if defined ALLARGS if not "%ALLARGS%"=="%ALLARGS: .py=%" (
+    echo [rendergap] An argument contains a detached " .py" -- PowerShell split
+    echo [rendergap] the script path. Quote the value:
+    echo [rendergap]   -script="unreal_rendergap\Scripts\setup_bench.py"
+    exit /b 1
+)
 
 set "ENGINE_MODULES=%UE_ROOT%\Engine\Binaries\Win64\UnrealEditor.modules"
 set "PROJECT_MODULES=%REPO%\unreal_rendergap\Binaries\Win64\UnrealEditor.modules"
