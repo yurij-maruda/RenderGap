@@ -56,7 +56,7 @@ Unreal has additional probe scripts for diagnostic.
 ## Result analysis
 
 `env\rg-python.bat -m pip install OpenEXR` require for working with Unreal Movie Render Queue output.
-`env\rg-python.bat isaac\analysis\compare_frame.py <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` to get analysis output in `results\analysis\compare` folder:
+`env\rg-python.bat isaac\analysis\compare_frame.py --mode <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` to get analysis output in `results\analysis\compare` folder:
 /place side_to_side, histogram and difference images./
 
 # Implementation Log

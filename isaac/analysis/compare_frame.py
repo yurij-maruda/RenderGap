@@ -1,6 +1,9 @@
 r"""How close are the two engines, and is the difference one number or many?
 
-    env\rg-python.bat isaac\analysis\compare_frame.py
+    env\rg-python.bat isaac\analysis\compare_frame.py [--mode MRQ_PathTracer]
+
+--mode picks which Unreal render to read: results/unreal/<mode>, one of
+MRQ_PathTracer (default), MRQ_LumenHW, MRQ_LumenSW, MRQ_NoGI.
 
 Reads the linear frame each engine wrote for the same USD camera --
 Isaac's hdr.npy and Unreal's MRQ EXR -- and answers, in order of what
@@ -26,7 +29,8 @@ curve cannot be made byte-identical, so comparing 8-bit sRGB would measure
 colour grading -- the exact failure spec section 6.2 warns about. One display
 transform is applied here, to both, only for the images a human looks at.
 
-Writes results/figures/bench/: side_by_side.png, difference.png, histograms.png.
+Writes results/analysis/compare_<mode>/: side_by_side.png, difference.png,
+histograms.png, summary.json.
 Exits non-zero if a gate fails, so it works as a CI step.
 """
 
@@ -42,6 +46,15 @@ import numpy as np
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 LUMA = np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
+
+# Unreal render modes, one results/unreal/<mode> folder each. First entry is the default.
+MODES = ("MRQ_PathTracer", "MRQ_LumenHW", "MRQ_LumenSW", "MRQ_NoGI")
+MODE_LABELS = {
+    "MRQ_PathTracer": "UE Path Tracer",
+    "MRQ_LumenHW": "UE Lumen HW",
+    "MRQ_LumenSW": "UE Lumen SW",
+    "MRQ_NoGI": "UE No GI",
+}
 
 # Fractions above which a frame is too clipped or too crushed to measure through.
 MAX_CLIPPED = 0.02
@@ -128,7 +141,7 @@ def display(img, gain=1.0):
     return (np.clip(x, 0, 1) * 255).astype(np.uint8)
 
 
-def save_figures(isaac, unreal, gain, out_dir):
+def save_figures(isaac, unreal, gain, out_dir, label="UE Path Tracer"):
     from PIL import Image, ImageDraw
 
     os.makedirs(out_dir, exist_ok=True)
@@ -150,7 +163,7 @@ def save_figures(isaac, unreal, gain, out_dir):
     canvas.paste(Image.fromarray(b), (w + 12, 22))
     d = ImageDraw.Draw(canvas)
     d.text((4, 6), f"Isaac RTX PT   (both panels at {shared:.3g}x, shared)", fill=(235, 235, 235))
-    d.text((w + 16, 6), f"UE Path Tracer   ratio {gain:.2f}x vs Isaac", fill=(235, 235, 235))
+    d.text((w + 16, 6), f"{label}   ratio {gain:.2f}x vs Isaac", fill=(235, 235, 235))
     canvas.save(os.path.join(out_dir, "side_by_side.png"))
 
     # Engine-native PNGs are NOT comparable to each other: Isaac writes Kit-tonemapped
@@ -167,10 +180,10 @@ def save_figures(isaac, unreal, gain, out_dir):
     rgb = np.stack([heat, heat ** 2.2, np.zeros_like(heat)], axis=-1)
     Image.fromarray((rgb * 255).astype(np.uint8)).save(os.path.join(out_dir, "difference.png"))
 
-    hist_png(isaac, unreal, gain, os.path.join(out_dir, "histograms.png"))
+    hist_png(isaac, unreal, gain, os.path.join(out_dir, "histograms.png"), label)
 
 
-def hist_png(isaac, unreal, gain, path):
+def hist_png(isaac, unreal, gain, path, label="UE Path Tracer"):
     """Log-luminance histograms, no matplotlib dependency."""
     from PIL import Image, ImageDraw
 
@@ -192,7 +205,7 @@ def hist_png(isaac, unreal, gain, path):
 
     d.rectangle([pad, pad, W - pad, H - pad], outline=(70, 70, 70))
     curve(li, (120, 200, 255), "Isaac RTX PT", 6)
-    curve(lu, (255, 170, 90), f"UE Path Tracer (x{gain:.4g})", 18)
+    curve(lu, (255, 170, 90), f"{label} (x{gain:.4g})", 18)
     d.text((pad, H - pad + 6), f"log2 luminance   {lo:g}", fill=(150, 150, 150))
     d.text((W - pad - 20, H - pad + 6), f"{hi:g}", fill=(150, 150, 150))
     img.save(path)
@@ -202,9 +215,20 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--isaac", default=os.path.join(REPO, "results", "isaac", "init_frame"))
-    p.add_argument("--unreal", default=os.path.join(REPO, "results", "unreal", "MRQ_PathTracer"))
-    p.add_argument("--figures", default=os.path.join(REPO, "results", "analysis", "compare"))
+    p.add_argument("--mode", choices=MODES, default=MODES[0],
+                   help="Unreal render mode: reads results/unreal/<mode>, writes "
+                        "results/analysis/compare_<mode> (default: %(default)s)")
+    p.add_argument("--unreal", default=None,
+                   help="override the input folder implied by --mode")
+    p.add_argument("--figures", default=None,
+                   help="override the output folder implied by --mode")
     args = p.parse_args(argv)
+
+    if args.unreal is None:
+        args.unreal = os.path.join(REPO, "results", "unreal", args.mode)
+    if args.figures is None:
+        args.figures = os.path.join(REPO, "results", "analysis", f"compare_{args.mode}")
+    label = MODE_LABELS.get(args.mode, args.mode)
 
     isaac, unreal = load_isaac(args.isaac), load_unreal(args.unreal)
     print(f"[compare] isaac  {args.isaac}   {isaac.shape}")
@@ -285,10 +309,11 @@ def main(argv=None):
     print(f"   PSNR after  gain                   {psnr(li, lu * gain):.2f} dB")
     print(f"   MAE  after  gain                   {np.mean(np.abs(li - lu * gain)):.6g}")
 
-    save_figures(isaac, unreal, gain, args.figures)
+    save_figures(isaac, unreal, gain, args.figures, label)
     print(f"\n[compare] figures -> {args.figures}")
 
     summary = {
+        "mode": args.mode,
         "isaac": {"median": float(np.median(li)), "p99": float(np.percentile(li, 99)),
                   "max": float(li.max())},
         "unreal": {"median": float(np.median(lu)), "p99": float(np.percentile(lu, 99)),
