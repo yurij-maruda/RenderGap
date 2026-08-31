@@ -43,7 +43,7 @@ if REPO not in sys.path:
 
 DEFAULT_STAGE = os.path.join("data", "warehouse_payload", "root_warehouse.usda")
 DEFAULT_CAMERA = "/World/nova_carter/MainCamera"
-DEFAULT_OUT = os.path.join("data", "bench", "isaac")
+DEFAULT_OUT = os.path.join("results", "isaac", "init_frame")
 
 
 def parse_args(argv=None):

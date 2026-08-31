@@ -7,6 +7,8 @@ Holds geometry, materials, camera poses and ground truth fixed, vary only light
 transport, and measures what that alone costs an object detector.
 Framed as an experiment, not production-ready pipeline.
 
+Status: in dev.
+
 # Setup
 
 ## Bat scripts & ENV variables (Windows only, so no .sh scripts available)
@@ -42,6 +44,17 @@ Does not touch `data\warehouse_source` after receiving. It is gitignored and may
 Use Unreal USD importer (Window -> USD Stage Editor -> File -> Open) 
 to import `data\warehouse_payload\root_warehouse.usda` on the scene.
 
+# Launching render
+
+## First frame image render (render check)
+
+* `env\rg-python.bat isaac\render_frame.py` isaac render init frame. output `results\isaac\init_frame`.
+* `unreal_rendergap\Scripts\render_frame.bat <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` unreal render init frame. select needed renderer. output `results\unreal\<render_selection>`.
+
+Unreal has additional probe scripts for diagnostic.
+
+## Result analysis
+
 # Implementation Log
 
 ## Omniverse USD to Unreal importing & visual sync
@@ -72,7 +85,7 @@ On the Mesh Import level it works fine, the bug occurs as a scene-level override
 Solution: Disable UsePrimKindsToCollapsing on USD stage actor. 
 This will force the engine to load every section as a separate mesh.
 
-## 4. Unreal lightning import is not match with Isaac because of additional gaming renderer properties. 
+### 4. Unreal lightning import is not match with Isaac because of additional gaming renderer properties. 
 Custom RenderGapUSD Unreal module to fix the import. Isaac uses unnormalized power, but unreal uses normalized only.
 Also, attenation for the full area is set up.
 

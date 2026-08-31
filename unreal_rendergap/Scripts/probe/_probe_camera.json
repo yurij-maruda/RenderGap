@@ -1,0 +1,38 @@
+{
+  "unreal": {
+    "component": "CameraComponent",
+    "actor": "MainCamera",
+    "focal_length_mm": 24.0,
+    "sensor_width_mm": 20.954999923706055,
+    "sensor_height_mm": 15.7162504196167,
+    "sensor_aspect": 1.3333332538604736,
+    "hfov_deg": 47.16855239868164,
+    "aperture_fstop": 4.0,
+    "focus_method": "<CameraFocusMethod.DISABLE: 3>",
+    "near_clip_uu": 1.0,
+    "shutter_speed": 60.000003814697266,
+    "iso": 500.0,
+    "exposure_bias": 0.0,
+    "exposure_method": "<AutoExposureMethod.AEM_MANUAL: 2>",
+    "apply_physical_camera_exposure": true,
+    "depth_of_field_fstop": 4.0,
+    "depth_of_field_focal_distance": 0.0,
+    "world_location": [
+      255.241414641635,
+      -965.3725624084475,
+      44.72905913280009
+    ],
+    "linear_exposure_scale": 0.005208333002196438
+  },
+  "usd": {
+    "focal_length_mm": 23.999999463558197,
+    "sensor_width_mm": 20.954999327659607,
+    "sensor_height_mm": 15.716250240802765,
+    "near_clip_uu": 0.9999999776482582,
+    "fstop": 4.0,
+    "shutter_speed": 60.0000035762789,
+    "iso": 500.0,
+    "exposure_bias": 0.0,
+    "linear_exposure_scale": 0.005208333022892475
+  }
+}

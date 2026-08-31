@@ -48,7 +48,7 @@ ROBOT_URL = "Isaac/Samples/ROS2/Robots/Nova_Carter_ROS.usd"
 RESOLUTION = (800, 600)  # spec section 6.2 -- same resolution as the real runs
 RT_SUBFRAMES = 32  # let the path tracer converge; a noisy frame is not evidence
 
-OUT = os.path.join(repo_root(), "data", "_smoke", "warehouse")
+OUT = os.path.join(repo_root(), "results", "isaac", "_smoke")
 
 
 def asset_path(assets_root: str, rel: str) -> str:
