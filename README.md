@@ -44,6 +44,8 @@ Does not touch `data\warehouse_source` after receiving. It is gitignored and may
 Use Unreal USD importer (Window -> USD Stage Editor -> File -> Open) 
 to import `data\warehouse_payload\root_warehouse.usda` on the scene.
 
+Probably you need to delete the old actor and related cache (UsdAssetCache.uasset + UsdAssets in Content folder) if artifacts occur.
+
 # Launching render
 
 ## First frame image render (render check)
@@ -57,7 +59,7 @@ Unreal has additional probe scripts for diagnostic.
 
 `env\rg-python.bat -m pip install OpenEXR` require for working with Unreal Movie Render Queue output.
 `env\rg-python.bat isaac\analysis\compare_frame.py --mode <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` to get analysis output in `results\analysis\compare` folder:
-/place side_to_side, histogram and difference images./
+/place side_to_side, histogram and difference images/
 
 # Implementation Log
 

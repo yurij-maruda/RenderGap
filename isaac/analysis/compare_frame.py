@@ -162,8 +162,8 @@ def save_figures(isaac, unreal, gain, out_dir, label="UE Path Tracer"):
     canvas.paste(Image.fromarray(a), (0, 22))
     canvas.paste(Image.fromarray(b), (w + 12, 22))
     d = ImageDraw.Draw(canvas)
-    d.text((4, 6), f"Isaac RTX PT   (both panels at {shared:.3g}x, shared)", fill=(235, 235, 235))
-    d.text((w + 16, 6), f"{label}   ratio {gain:.2f}x vs Isaac", fill=(235, 235, 235))
+    d.text((4, 6), f"Isaac RTX PT", fill=(235, 235, 235))
+    d.text((w + 16, 6), f"{label}", fill=(235, 235, 235))
     canvas.save(os.path.join(out_dir, "side_by_side.png"))
 
     # Engine-native PNGs are NOT comparable to each other: Isaac writes Kit-tonemapped
