@@ -1,8 +1,8 @@
 r"""Compare the textures Unreal imported against the PNGs Isaac samples directly.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal\probe_textures.py
+    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\probe\probe_textures.py
 
-unreal/probe_materials.py established that the material GRAPH transfers intact --
+probe_materials.py established that the material GRAPH transfers intact --
 normal, roughness, metallic and AO are all wired in Unreal exactly as the
 UsdPreviewSurface specifies, and nothing is dropped. So the residual render
 difference has to come from the texture data itself, not from how it is plumbed.

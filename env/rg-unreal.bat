@@ -2,7 +2,7 @@
 :: ---------------------------------------------------------------------------
 :: Run UnrealEditor-Cmd against the repo's project, headless.
 ::
-::     env\rg-unreal.bat -run=pythonscript -script=unreal\setup_bench.py
+::     env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\setup_bench.py
 ::     env\rg-unreal.bat L_UsdWarehouse -game -MoviePipelineConfig=...
 ::
 :: The project path and -unattended/-nosplash are supplied here so no caller has

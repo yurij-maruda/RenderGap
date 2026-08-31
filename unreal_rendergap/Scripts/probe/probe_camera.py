@@ -1,6 +1,6 @@
 r"""Read back what Unreal actually made of the USD bench camera.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal\probe_camera.py
+    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\probe\probe_camera.py
 
 Loads L_UsdWarehouse, finds the AUsdStageActor, asks it for the component it
 generated for the camera prim, and compares every value against the USD the
@@ -12,7 +12,7 @@ did not survive) before any render time is spent on them.
 Prints PASS/FAIL per check and exits non-zero on failure, like
 isaac/tools/check_env.py, so it works unchanged as a CI step.
 
-Writes unreal/_probe_camera.json for analysis/compare_frame.py to cross-check
+Writes Scripts/probe/_probe_camera.json for analysis/compare_frame.py to cross-check
 against Isaac's meta.json.
 """
 

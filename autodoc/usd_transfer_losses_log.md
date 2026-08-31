@@ -245,7 +245,7 @@ fudge: `2^bias` is the only place Unreal can express that term.
 `exposure:fStop` must be set equal to `fStop` -- required, because Unreal's exposure
 aperture comes from `fStop` via `CurrentAperture` (section 6). With that, the two formulas
 cancel. Verified end to end at f/4, 1/60 s, ISO 500: both engines compute `0.005208333`,
-and `unreal/probe_camera.py` reads back `CameraShutterSpeed 60.000004`, `CameraISO 500.0`,
+and `unreal_rendergap/Scripts/probe/probe_camera.py` reads back `CameraShutterSpeed 60.000004`, `CameraISO 500.0`,
 `AutoExposureBias 0.0`.
 
 **Kit does honour the standard attributes.** This was not safe to assume -- Kit has its own

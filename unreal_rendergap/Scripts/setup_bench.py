@@ -1,6 +1,6 @@
 r"""Create the Movie Render Queue assets for the bench frame. Run once.
 
-    env\rg-unreal.bat -run=pythonscript -script=unreal\setup_bench.py
+    env\rg-unreal.bat -run=pythonscript -script=unreal_rendergap\Scripts\setup_bench.py
 
 Creates, under /Game/Bench:
 
@@ -36,7 +36,7 @@ PACKAGE_PATH = "/Game/Bench"
 SEQUENCE_NAME = "LS_BenchFrame"
 RESOLUTION = (800, 600)
 DISPLAY_RATE = 60  # matches the stage's timeCodesPerSecond
-OUTPUT_DIR = "{project_dir}/../data/bench/unreal"
+OUTPUT_DIR = "{project_dir}/../results/unreal"
 ENGINE_WARM_UP_FRAMES = 240  # the UsdStageActor has to open and translate the stage first
 
 # Path tracer samples per pixel. This is NOT r.PathTracing.SamplesPerPixel and NOT the
