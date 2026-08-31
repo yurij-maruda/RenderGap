@@ -5,7 +5,7 @@ Cross-renderer domain-gap benchmark. One OpenUSD scene, one baked camera
 trajectory, five render conditions across Isaac Sim and Unreal Engine 5.
 Holds geometry, materials, camera poses and ground truth fixed, vary only light
 transport, and measures what that alone costs an object detector.
-Framed as an experiment, not production-ready pipeline.
+Framed as an experiment, not a production-ready pipeline.
 
 Status: in dev.
 
@@ -16,8 +16,8 @@ Status: in dev.
 Copy `env\local.bat.example` and setup ENV paths.
 
 Main scripts:
-* `rg-gui.bat <auto_open.usda>` launch isaac editor
-* `rg-python.bat <isaac\relative_script_path.py>` to run python under isaac Kit ecosystem
+* `rg-gui.bat <auto_open.usda>` launch Isaac Editor
+* `rg-python.bat <isaac\relative_script_path.py>` to run Python under isaac Kit ecosystem
 * `rg-unreal.bat <unreal arguments>` to run headless unreal cmd
 
 Check setup with:
@@ -25,26 +25,26 @@ Check setup with:
 * `env\rg-python.bat isaac\test\hello_stage.py`
 * `env\rg-python.bat isaac\test\hello_isaac.py`
 
-## Fetch an Unreal-compatible USD scene by the script:
+## Fetch an Unreal-compatible USD scene with the script:
 
 * `env\rg-python.bat isaac\scene\fetch_warehouse_source.py` run CDN-to-local collection and USD linking fix script.
-* `env\rg-python.bat isaac\scene\bake_preview_surfaces.py` convert MDL materials to UsdPreviewSurface format.
+* `env\rg-python.bat isaac\scene\bake_preview_surfaces.py` converts MDL materials to UsdPreviewSurface format.
 * `env\rg-python.bat isaac\test\hello_warehouse.py` smoke test of fetched content, render image probe of content.
 
-`data\warehouse_payload\root_warehouse.usda` is the engine-shared scene that is based on fetched scene:
+`data\warehouse_payload\root_warehouse.usda` is the engine-shared scene that is based on the fetched scene:
 `data\warehouse_source\Isaac\Environments\Simple_Warehouse\warehouse_multiple_shelves.usd` 
 including Nova Carter and Warehouse dependencies around.
-Does not touch `data\warehouse_source` after receiving. It is gitignored and may be hard-overrided.
+Does not touch `data\warehouse_source` after receiving. It is gitignored and may be hard-overridden.
 
 ## Enable IDE Indexing
 `env\rg-python.bat isaac\tools\ide_paths.py --write`
 
-## Compile unreal_rendergap project unreal Unreal Engine 5.7
+## Compile unreal_rendergap project in Unreal Engine 5.7
 
 Use Unreal USD importer (Window -> USD Stage Editor -> File -> Open) 
-to import `data\warehouse_payload\root_warehouse.usda` on the scene.
+to import `data\warehouse_payload\root_warehouse.usda` into the scene.
 
-Probably you need to delete the old actor and related cache (UsdAssetCache.uasset + UsdAssets in Content folder) if artifacts occur.
+You probably need to delete the old actor and the related cache (UsdAssetCache.uasset + UsdAssets in the Content folder) if artifacts appear.
 
 # Launching render
 
@@ -53,13 +53,38 @@ Probably you need to delete the old actor and related cache (UsdAssetCache.uasse
 * `env\rg-python.bat isaac\render_frame.py` isaac render init frame. output `results\isaac\init_frame`.
 * `unreal_rendergap\Scripts\render_frame.bat <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` unreal render init frame. select needed renderer. output `results\unreal\<render_selection>`.
 
-Unreal has additional probe scripts for diagnostic.
+Unreal has additional probe scripts for diagnostics.
 
 ## Result analysis
 
-`env\rg-python.bat -m pip install OpenEXR` require for working with Unreal Movie Render Queue output.
-`env\rg-python.bat isaac\analysis\compare_frame.py --mode <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` to get analysis output in `results\analysis\compare` folder:
-/place side_to_side, histogram and difference images/
+`env\rg-python.bat -m pip install OpenEXR` is required for working with Unreal Movie Render Queue output.
+
+`env\rg-python.bat isaac\analysis\compare_frame.py --mode <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` to get analysis output in `results\analysis\compare` folder.
+
+### compare_frame.py script result:
+
+<table>
+  <tr>
+    <td align="center">
+      <b>Isaac RTX PT</b><br />
+      <img src="autodoc/image/isaac_display.png" width="100%" alt="Isaac RTX PT">
+    </td>
+    <td align="center">
+      <b>UE Path Tracer</b><br />
+      <img src="autodoc/image/unreal_display.png" width="100%" alt="UE Path Tracer">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Difference</b><br />
+      <img src="autodoc/image/difference.png" width="100%" alt="Difference">
+    </td>
+    <td align="center">
+      <b>Histogram</b><br />
+      <img src="autodoc/image/histograms.png" width="100%" alt="Histogram">
+    </td>
+  </tr>
+</table>
 
 # Implementation Log
 
@@ -70,7 +95,7 @@ and change on the USD side should be strictly in sync between engines.
 The only way is to keep USD a the single source of truth.
 It is required to modify the USD file and engines in a way 
 that the scene will look the same automatically on both sides.
-This is including compatible USD properties, materials, importing rules, ect…
+This includes compatible USD properties, materials, importing rules, ect…
 
 ### 1. Need to copy all USD dependencies locally.
 Local copy with local dependencies requires for Unreal loading. 
