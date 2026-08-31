@@ -1,0 +1,793 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, -3.049387442572741, 1.3997894333843799)
+                double radius = 6.213771820068359
+            }
+            dictionary Perspective = {
+                double3 position = (2.843286711288874, 8.655767120019556, 0.7591756856424867)
+                double3 target = (-0.5453226062934324, 17.26465646571654, -2.2033322441713104)
+            }
+            dictionary Right = {
+                double3 position = (2.0013238191066143, -3.2405708078773725, 3.906717598584354e-16)
+                double radius = 4.1657463073730465
+            }
+            dictionary Top = {
+                double3 position = (2.2695981187805865, 9.749365343032537, 5)
+                double radius = 6.166366958618164
+            }
+            string boundCamera = "/World/nova_carter/MainCamera"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./camera_settings.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            double "rtx:directLighting:sampledLighting:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:indirectDiffuse:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:pathtracing:fireflyFilter:maxPerEmissiveUnexposedIntensity" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSample" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3199.99951171875
+            double "rtx:post:tonemap:fNumber" = 6.009999865666032
+            int "rtx:post:tonemap:op" = 1
+            double "rtx:post:tonemap:responsivity" = 0.9999999776482582
+            double "rtx:raytracing:inscattering:maxRTSampleUnexposedIntensity" = 204799.96875
+            double "rtx:translucency:maxRayUnexposedIntensity" = 19199.998046875
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 1000000
+    metersPerUnit = 1
+    startTimeCode = 0
+    subLayers = [
+        @./camera_settings.usda@
+    ]
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def "warehouse_multiple_shelves" (
+        prepend payload = @../warehouse_source/Isaac/Environments/Simple_Warehouse/warehouse_multiple_shelves.usd@
+    )
+    {
+        float3 xformOp:rotateZYX = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.37756804353560547, -0.2948344235642484, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+
+        over "SM_floor63"
+        {
+            double3 xformOp:scale = (1, 1, 1)
+        }
+
+        over "GroundPlane"
+        {
+            token visibility = "inherited"
+            double3 xformOp:translate = (0, 0, -0.001)
+
+            over "CollisionMesh"
+            {
+                token visibility = "inherited"
+                float3 xformOp:scale = (0.01, 0.01, 0.01)
+            }
+
+            over "CollisionPlane"
+            {
+                token visibility = "inherited"
+                float3 xformOp:scale = (0.01, 0.01, 0.01)
+            }
+        }
+
+        over "SM_LampCeilingA_38"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+                color3f inputs:color = (1, 1, 1)
+                float inputs:colorTemperature = 6500
+                bool inputs:enableColorTemperature = 0
+                float inputs:exposure = 0
+                float inputs:height = 28
+                float inputs:intensity = 399999.97
+                float inputs:width = 200
+                token visibility = "invisible"
+                matrix4d xformOp:transform = ( (0.009999999776482582, -7.771560998668172e-18, -2.2204459996194783e-18, 0), (7.771560998668172e-18, 0.009999999776482582, 1.110222999809738e-18, 0), (2.2204459996194775e-18, -1.1102229998097397e-18, 0.009999999776482582, 0), (0, -0, -3.172397609091386, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+        }
+
+        over "SM_LampCeilingA_44"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_23"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_24"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_33"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_35"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_36"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_37"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "SM_LampCeilingA_43"
+        {
+            over "RectLight" (
+                active = false
+            )
+            {
+            }
+        }
+
+        over "RectLight_01"
+        {
+            float inputs:height = 10
+            float inputs:intensity = 15000
+            bool inputs:normalize = 0
+            float inputs:width = 4
+            token visibility = "inherited"
+            float3 xformOp:scale = (1, 1, 1)
+        }
+
+        over "RectLight_02"
+        {
+            float height = 1000
+            float inputs:height = 10
+            float inputs:intensity = 15000
+            bool inputs:normalize = 0
+            float inputs:width = 4
+            token visibility = "inherited"
+            float width = 400
+            float3 xformOp:scale = (1, 1, 1)
+        }
+
+        over "DistantLight" (
+            active = false
+        )
+        {
+            token visibility = "invisible"
+        }
+    }
+
+    def "nova_carter" (
+        prepend payload = @../warehouse_source/Isaac/Robots/NVIDIA/NovaCarter/nova_carter.usd@
+        variants = {
+            string Configuration = "No_Internals"
+            string ROS = "Enabled"
+        }
+    )
+    {
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (2.4227513530327403, 9.653725624084473, -2.9704179382861184e-7)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "differential_drive"
+        {
+            over "joint_name_array"
+            {
+                custom token inputs:input0
+                delete token inputs:input0.connect = </World/nova_carter/differential_drive/joint_wheel_left_name.inputs:value>
+                prepend token inputs:input0.connect = </World/nova_carter/differential_drive/joint_wheel_left_name.inputs:value>
+                custom token inputs:input1
+                delete token inputs:input1.connect = </World/nova_carter/differential_drive/joint_wheel_right_name.inputs:value>
+                prepend token inputs:input1.connect = </World/nova_carter/differential_drive/joint_wheel_right_name.inputs:value>
+            }
+        }
+
+        over "chassis_link"
+        {
+            over "sensors"
+            {
+                over "back_owl" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+
+                    over "camera"
+                    {
+                        custom string isaac:nameOverride (
+                            displayName = "Name Override"
+                            doc = "Name override for prim lookup in base name search"
+                        )
+                    }
+
+                    over "ROS_graph" (
+                        active = false
+                    )
+                    {
+                    }
+
+                    over "mount" (
+                        active = false
+                    )
+                    {
+                    }
+                }
+
+                over "left_hawk" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+
+                    over "right"
+                    {
+                        over "camera_right"
+                        {
+                            custom string isaac:nameOverride (
+                                displayName = "Name Override"
+                                doc = "Name override for prim lookup in base name search"
+                            )
+                        }
+                    }
+                }
+
+                over "right_owl" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+
+                    over "camera"
+                    {
+                        custom string isaac:nameOverride (
+                            displayName = "Name Override"
+                            doc = "Name override for prim lookup in base name search"
+                        )
+                    }
+                }
+
+                over "front_hawk" (
+                    active = false
+                )
+                {
+                    over "right"
+                    {
+                        over "camera_right"
+                        {
+                            custom string isaac:nameOverride (
+                                displayName = "Name Override"
+                                doc = "Name override for prim lookup in base name search"
+                            )
+                        }
+                    }
+                }
+
+                over "back_hawk" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+
+                    over "left"
+                    {
+                        over "camera_left"
+                        {
+                            custom string isaac:nameOverride (
+                                displayName = "Name Override"
+                                doc = "Name override for prim lookup in base name search"
+                            )
+                        }
+                    }
+                }
+
+                over "rear_RPLidar" (
+                    active = false
+                )
+                {
+                    over "RPLidar_S2E"
+                    {
+                        custom string isaac:nameOverride (
+                            displayName = "Name Override"
+                            doc = "Name override for prim lookup in base name search"
+                        )
+                    }
+                }
+
+                over "right_hawk" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+                }
+
+                over "XT_32" (
+                    active = false
+                )
+                {
+                }
+
+                over "front_owl" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+                }
+
+                over "left_owl" (
+                    active = false
+                )
+                {
+                    custom string isaac:nameOverride (
+                        displayName = "Name Override"
+                        doc = "Name override for prim lookup in base name search"
+                    )
+                }
+
+                over "front_RPLidar"
+                {
+                    over "RPLidar_S2E"
+                    {
+                        custom string isaac:nameOverride (
+                            displayName = "Name Override"
+                            doc = "Name override for prim lookup in base name search"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "front_hawk" (
+            active = false
+        )
+        {
+        }
+
+        over "left_hawk" (
+            active = false
+        )
+        {
+            over "left_camera_render_product"
+            {
+                uniform float2 ui:nodegraph:node:pos = (-128.24101, -5.2916718)
+            }
+        }
+
+        over "right_hawk" (
+            active = false
+        )
+        {
+        }
+
+        over "back_hawk" (
+            active = false
+        )
+        {
+        }
+
+        over "front_owl" (
+            active = false
+        )
+        {
+        }
+
+        over "back_owl" (
+            active = false
+        )
+        {
+        }
+
+        over "left_owl" (
+            active = false
+        )
+        {
+        }
+
+        over "right_owl" (
+            active = false
+        )
+        {
+        }
+
+        over "chassis_imu" (
+            active = false
+        )
+        {
+        }
+
+        over "ros_lidars"
+        {
+            over "front_3d_lidar_render_product"
+            {
+                custom uint inputs:execIn
+                uniform float2 ui:nodegraph:node:pos = (-126.63407, 0)
+            }
+
+            over "back_2d_lidar_render_product"
+            {
+                custom uint inputs:execIn
+            }
+        }
+
+        over "caster_frame_base"
+        {
+        }
+
+        over "caster_swivel_left"
+        {
+        }
+
+        over "caster_wheel_left"
+        {
+        }
+
+        over "caster_swivel_right"
+        {
+        }
+
+        over "caster_wheel_right"
+        {
+        }
+
+        over "wheel_left"
+        {
+        }
+
+        over "wheel_right"
+        {
+        }
+
+        over "joint_caster_base"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "joint_wheel_left"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "joint_wheel_right"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "joint_swing_left"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "joint_swing_right"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "joint_caster_left"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "joint_caster_right"
+        {
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "MainCamera"
+        {
+            quatd xformOp:orient = (0.4999999999999999, 0.5, -0.5000000000000001, -0.5)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.12966279338360964, 1.7763568394002505e-15, 0.44729088836979475)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+}
+
+def Xform "Environment"
+{
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def DistantLight "defaultLight" (
+        active = false
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 1
+        float inputs:exposure = 1.5
+        float inputs:intensity = 3000
+        bool inputs:normalize = 1
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        custom int omni:rtx:usdluxVersion = 2505
+        quatd xformOp:orient = (0.6532814824381883, 0.27059805007309856, 0.27059805007309856, 0.6532814824381883)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/nova_carter/MainCamera>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                string omni:rtx:debug:view:target
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                token omni:rtx:lights:visibilityOverride
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:matteobject:enabled
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:post:tonemap:enableSrgbToGamma
+                token omni:rtx:post:tonemap:operator = "none"
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                float omni:rtx:pt:fireflyFilter:maxPerEmissiveUnexposedIntensity = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSample = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse = 3199.9995
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                float omni:rtx:rt:directLighting:maxRayUnexposedIntensity = 6399.999
+                bool omni:rtx:rt:ecoMode:enabled
+                float omni:rtx:rt:indirectdiffuse:maxRayUnexposedIntensity = 6399.999
+                float omni:rtx:rt:inscattering:maxRTSampleUnexposedIntensity = 204799.97
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                float omni:rtx:rt:refractions:maxRayUnexposedIntensity = 19199.998
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                token omni:rtx:wireframe:mode
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+    }
+}
+
+over "OmniverseKit_Persp" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (0.01, 10000000)
+    float exposure:fStop = 6.0099998
+    float exposure:responsivity = 1
+    float exposure:time = 0.02
+    float focalLength = 18.147562
+    float focusDistance = 400
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -9.714530462553007)
+    bool omni:rtx:autoExposure:enabled = 0
+    float3 xformOp:rotateXYZ = (72.24446, -7.6333315e-14, 21.485466)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (2.843286711288874, 8.655767120019556, 0.7591756856424867)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Front" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 6.0099998
+    float exposure:time = 0.02
+    float horizontalAperture = 62.13772
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 62.13772
+    float3 xformOp:rotateXYZ = (90, -6.3611094e-15, 90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5, -3.049387442572741, 1.3997894333843799)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Right" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 6.0099998
+    float exposure:time = 0.02
+    float horizontalAperture = 41.657463
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 41.657463
+    float3 xformOp:rotateXYZ = (90, -0, -1.2722219e-14)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (2.0013238191066143, -3.2405708078773725, 3.906717598584354e-16)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Top" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 6.0099998
+    float exposure:time = 0.02
+    float horizontalAperture = 61.66367
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 61.66367
+    float3 xformOp:rotateXYZ = (1.2722219e-14, -7.016709e-15, -90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (2.2695981187805865, 9.749365343032537, 5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "PhysxSceneAPI"]
+)
+{
+}
+

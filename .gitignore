@@ -1,15 +1,13 @@
 # ---------------------------------------------------------------------------
 # Vendored NVIDIA assets
 # ---------------------------------------------------------------------------
-# The collected dependency closure of warehouse_multiple_shelves.usd and
-# Nova_Carter_ROS.usd. Excluded for two independent reasons: size (SimReady
+# The mirrored dependency closure lands in data/warehouse_source/ and is covered
+# by the data/* rule below. Excluded for two independent reasons: size (SimReady
 # 4K PBR textures) and NVIDIA's asset licence, which does not clearly permit
 # redistribution from a public repo. Reproduced by:
-#     env\rg-python.bat isaac\tools\collect_assets.py
-# Integrity is tracked by isaac/_assets/manifest.sha256, which IS committed.
-isaac/_assets/*
-!isaac/_assets/.gitkeep
-!isaac/_assets/manifest.sha256
+#     env\rg-python.bat isaac\scene\fetch_warehouse_source.py
+# Provenance and integrity are tracked per file in data/warehouse_source/
+# _fetch_manifest.json, which the fetch writes alongside the tree.
 
 # ---------------------------------------------------------------------------
 # Generated scene layers
@@ -63,11 +61,13 @@ unreal_rendergap/Saved/
 unreal_rendergap/Content/UsdAssets/
 unreal_rendergap/Content/UsdAssetCache.uasset
 unreal_rendergap/.vs/
+unreal_rendergap/.vsconfig
 unreal_rendergap/*.sln
 unreal_rendergap/*.suo
 unreal_rendergap/*.xcodeproj
 unreal_rendergap/Plugins/**/Binaries/
 unreal_rendergap/Plugins/**/Intermediate/
+unreal_rendergap/unreal_rendergap.uproject.DotSettings.user
 
 # ---------------------------------------------------------------------------
 # Isaac Sim / Kit runtime droppings
@@ -87,3 +87,5 @@ Thumbs.db
 desktop.ini
 .DS_Store
 .run/*
+
+TODO.md

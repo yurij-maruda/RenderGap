@@ -1,0 +1,16 @@
+@echo off
+:: ---------------------------------------------------------------------------
+:: Copy this file to env\local.bat and edit the path below.
+:: env\local.bat is gitignored -- it is the ONLY file allowed to contain a
+:: machine-specific absolute path.
+:: ---------------------------------------------------------------------------
+
+set "CARB_APP_PATH=C:\path\to\isaacsim\_build\windows-x86_64\release\kit"
+set "EXP_PATH=C:\path\to\isaacsim\_build\windows-x86_64\release\apps"
+set "ISAAC_PATH=C:\path\to\isaacsim\_build\windows-x86_64\release"
+set "ISAACSIM_ASSET_ROOT=C:\path\to\RenderGap_repo\data"
+set "PYTHONPATH=C:\path\to\isaacsim\_build\windows-x86_64\release\site"
+set "RENDERGAP_ROOT=C:\path\to\RenderGap"
+set "ISAACSIM_ROOT=C:\path\to\isaacsim\_build\windows-x86_64\release"
+set "UE_ROOT=C:\path\to\UnrealEngine"
+

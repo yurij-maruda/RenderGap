@@ -1,0 +1,205 @@
+#usda 1.0
+(
+    doc = """RenderGap bench camera. Single source of truth for the render camera in both
+Isaac Sim and Unreal Engine 5.7.
+
+Sublayer this -- never payload or reference it, or every path gains a segment and path
+parity with the trajectory layer is lost (docs/usd_transfer_losses.md section 1).
+
+Every attribute Unreal reads is authored explicitly, including ones set to the USD schema
+fallback. That is deliberate, not redundant: UsdToUnreal::ConvertGeomCamera gates every
+single read on Attr.HasAuthoredValue(), so an unauthored attribute is not the USD default,
+it is whatever UCineCameraComponent happened to be constructed with -- for UE 5.7 the
+16:9 Digital Film filmback and the Universal Zoom lens at 35mm f/2.8.
+
+Do not open and save this file in the Isaac GUI. It re-roots sublayers as payloads and
+injects customLayerData, a /Render scope and four OmniverseKit_* camera overs."""
+)
+
+over "World"
+{
+    over "nova_carter"
+    {
+        def Camera "MainCamera" (
+            prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+            doc = """800x600 bench camera. Horizontal FOV 47.1686 deg, sensor aspect 4:3."""
+        )
+        {
+            # ==============================================================================
+            # GEOMETRY / INTRINSICS
+            #
+            # Unreal source of truth for this whole block:
+            #   USDCore/Source/USDUtilities/Private/USDPrimConversion.cpp:502
+            #       UsdToUnreal::ConvertGeomCamera
+            #
+            # THE UNIT TRAP. Distances go through UsdToUnreal::ConvertDistance
+            # (USDTypesConversion.cpp:351), which is Value *= MetersPerUnit / 0.01, i.e.
+            # x100 on this metres stage. It hits focalLength and both apertures, so
+            # horizontal FOV -- a pure ratio -- would survive... except that
+            # UCineCameraComponent::RecalcDerivedData (CineCameraComponent.cpp:528) clamps
+            # the FOCAL LENGTH against LensSettings while leaving the SENSOR unclamped.
+            # The default lens preset is Universal Zoom, 4..1000mm (BaseEngine.ini:3634).
+            #
+            # So the natural authoring -- focalLength 24, horizontalAperture 20.955 --
+            # arrives as focal 2400 (clamped to 1000) against a 2095.5 sensor:
+            #     intended  hFOV = 2*atan(20.955 / (2*24))   = 47.1686 deg
+            #     delivered hFOV = 2*atan(2095.5 / (2*1000)) = 92.6716 deg
+            # Nearly 2x wrong, with nothing logged.
+            #
+            # Fix: pre-divide by 100 so the x100 lands inside the clamp range. Isaac is
+            # unaffected -- GfCamera derives FOV from aperture/focalLength only, so a
+            # uniform rescale of both is invisible to it.
+            # CONFIRMED against the running engine: CurrentFocalLength 24.000000,
+            # Filmback 20.955000 x 15.716250, CurrentHorizontalFOV 47.168552.
+            # ==============================================================================
+
+            # -> CameraComponent.SetCurrentFocalLength()      x100 -> 24 mm
+            float focalLength = 0.24
+
+            # -> CameraComponent.Filmback.SensorWidth         x100 -> 20.955 mm
+            float horizontalAperture = 0.20955
+
+            # -> CameraComponent.Filmback.SensorHeight        x100 -> 15.71625 mm
+            # NOT the schema fallback (15.2908). Deliberately 0.20955 * 600/800 so the
+            # sensor aspect is exactly 4:3. Kit derives vertical FOV from the horizontal
+            # aperture and the render product aspect, Unreal from SensorHeight; equal
+            # aspects make those two rules agree by construction.
+            float verticalAperture = 0.1571625
+
+            # -> Filmback.SensorHorizontalOffset / SensorVerticalOffset. No lens shift.
+            float horizontalApertureOffset = 0
+            float verticalApertureOffset = 0
+
+            # -> CameraComponent.SetProjectionMode()
+            token projection = "perspective"
+
+            # -> SetCustomNearClippingPlane + bOverride_ = true, and the ortho near/far.
+            # x100: near 0.01 m -> 1 uu.
+            # LOSS: Unreal has no far clip plane in perspective mode, so 1000 only reaches
+            # the unused ortho path.
+            float2 clippingRange = (0.01, 1000)
+
+            # ==============================================================================
+            # APERTURE AND DEPTH OF FIELD
+            #
+            # fStop is NOT just a depth-of-field control in Unreal. UpdateCameraLens
+            # (CineCameraComponent.cpp:706) copies CurrentAperture into
+            # PostProcessSettings.DepthOfFieldFstop, which the renderer then uses as the
+            # exposure aperture (PostProcessEyeAdaptation.cpp:395). So fStop sets exposure.
+            #
+            # 4.0 is inside the [MinFStop 1.2, MaxFStop 22] clamp, so nothing is silently
+            # altered. Authoring 0 to disable DOF would instead be clamped to 1.2, and that
+            # clamped value would become the exposure aperture -- the file would no longer
+            # state what Unreal actually uses. That is a large part of the 6.43-stop error
+            # that made the first Isaac/Unreal comparison unreadable.
+            #
+            # focusDistance is a REAL distance, not 0. This is the subject distance -- the
+            # racking is about 10 m down the aisle.
+            #
+            # Authoring 0 here is what a "DOF is off anyway" reading suggests, and it is a
+            # trap: Kit's depth of field reads the camera's physical fStop and
+            # focusDistance directly (/rtx/post/dof/overrideEnabled = false means "use the
+            # camera"), so focusDistance = 0 puts the focal plane at zero distance and
+            # smears the entire frame. It only looks fine offline because
+            # isaac/render_frame.py pins /rtx/post/dof/enabled = False; any viewport with
+            # DOF switched on renders mush. Reproduced directly: forcing DOF on with
+            # focusDistance = 0 turns this scene into an unreadable blur.
+            #
+            # At 24 mm f/4 the hyperfocal distance is ~4.8 m, so focusing at 10 m keeps
+            # roughly 2.4 m to infinity sharp. The frame is then correct whether or not a
+            # given viewport has DOF enabled, instead of depending on a global toggle.
+            #
+            # Unreal must NOT get depth of field from this (spec section 3.1 lists it as a
+            # controlled variable). A non-zero focusDistance would give it
+            # FocusMethod = Manual, so FRenderGapGeomCameraTranslator forces
+            # FocusMethod = Disable. That still leaves DepthOfFieldFstop = CurrentAperture
+            # (UpdateCameraLens takes the else branch), so the exposure aperture survives.
+            # ==============================================================================
+            float fStop = 4.0
+            float focusDistance = 10.0
+
+            # ==============================================================================
+            # EXPOSURE -- ONE PHYSICAL OPERATING POINT, SHARED
+            #
+            # Both engines implement the same model, and setting the shared terms equal
+            # makes them cancel exactly rather than approximately:
+            #
+            #   USD    ComputeLinearExposureScale, pxr/usd/usdGeom/camera.h:698
+            #          scale = responsivity * time * (iso/100) * 2^exposure / fStop^2
+            #
+            #   Unreal GetPhysicalCameraEV100, PostProcessEyeAdaptation.cpp:395, with
+            #          LuminanceMax = 0.78/0.78 = 1 exactly
+            #          scale = 2^AutoExposureBias
+            #                / (DepthOfFieldFstop^2 * CameraShutterSpeed * 100/CameraISO)
+            #
+            #   here   scale = 1 * (1/60) * (500/100) * 1 / 4^2 = 1/192 = 0.00520833
+            #          Unreal  2^0 / (4^2 * 60 * 100/500)       = 1/192 = 0.00520833
+            #
+            # f/4, 1/60 s, ISO 500 is a realistic warehouse AMR exposure, and it is also
+            # measured: at ISO 100 the Isaac linear median was 0.034835, so the unexposed
+            # scene median is 33.4 cd/m^2 and 5x lands it at 0.174 -- middle grey. The
+            # control condition is the one that has to be well exposed, because it is the
+            # split the detector trains on; Unreal's deviation from it is the measurement.
+            #
+            # VERIFIED that Kit consumes these rather than only its own OmniRtx equivalents:
+            # halving exposure:time (1/60 -> 1/120) halved the linear frame, median
+            # 0.034835 -> 0.017456 (x0.5011), p99 x0.5012, max x0.5003.
+            #
+            # exposure:fStop MUST equal fStop above -- that equality is what makes the two
+            # formulas cancel, since Unreal takes its aperture from fStop via CurrentAperture.
+            #
+            # LOSS, and the reason FRenderGapGeomCameraTranslator exists: ConvertGeomCamera
+            # reads ONLY the plain exposure attribute, as AutoExposureBias
+            # (USDPrimConversion.cpp:569). It drops exposure:time, :iso, :fStop and
+            # :responsivity entirely, and there is no unreal:-prefixed override for them --
+            # the importer's camera vocabulary is exactly ten attributes, and the exporter
+            # (USDPrimConversion.cpp:2281) writes back the same ten. Our translator closes
+            # the gap: :time and :iso become CameraShutterSpeed / CameraISO, :responsivity
+            # folds into AutoExposureBias as log2(responsivity), and AEM_Manual with
+            # physical camera exposure is forced on.
+            # ==============================================================================
+            float exposure = 0
+            float exposure:fStop = 4.0
+            float exposure:iso = 500
+            float exposure:responsivity = 1
+            float exposure:time = 0.016666666
+
+            # Kit's own auto-exposure, held off so the physical model above is the only
+            # thing setting brightness. Unreal ignores all of these.
+            bool omni:rtx:autoExposure:enabled = 0
+            float omni:rtx:autoExposure:adaptationSpeed = 3.5
+            bool omni:rtx:autoExposure:histogramClamping:enabled = 1
+            float omni:rtx:autoExposure:histogramClamping:maxLuminance = 100000
+            float omni:rtx:autoExposure:histogramClamping:minLuminance = 50
+            token omni:rtx:autoExposure:histogramFilter = "median"
+            float omni:rtx:autoExposure:whitePointScale = 10
+
+            # ==============================================================================
+            # MOTION BLUR / STEREO -- OFF
+            # Not read by Unreal at all (absent from ConvertGeomCamera). Both are the schema
+            # fallback, so they are a no-op for anything that does read them.
+            # shutter:close == shutter:open == 0 is a zero-length shutter interval.
+            # ==============================================================================
+            double shutter:open = 0
+            double shutter:close = 0
+            uniform token stereoRole = "mono"
+
+            uniform token purpose = "default"
+            token visibility = "inherited"
+
+            # ==============================================================================
+            # POSE -- rigid to the robot chassis.
+            #
+            # No conversion needed. UsdToUnreal::ConvertXformable (USDPrimConversion.cpp:366)
+            # detects UsdGeomCamera and pre-applies FRotator(-90, -90, 0) for a Z-up stage,
+            # mapping USD's "look down -Z, +Y up" to Unreal's "look down +X, +Z up".
+            # ConvertMatrix handles the metres->cm scale and the right- to left-handed flip.
+            # Confirmed by both engines framing the same wall, rack and pallets.
+            # ==============================================================================
+            quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+}
