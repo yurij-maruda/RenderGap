@@ -9,6 +9,31 @@ Framed as an experiment, not a production-ready pipeline.
 
 Status: in dev.
 
+### compare_frame.py script result:
+
+<table>
+  <tr>
+    <td align="center">
+      <b>Isaac RTX PT</b><br />
+      <img src="autodoc/image/isaac_display.png" width="100%" alt="Isaac RTX PT">
+    </td>
+    <td align="center">
+      <b>UE Path Tracer</b><br />
+      <img src="autodoc/image/unreal_display.png" width="100%" alt="UE Path Tracer">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Difference</b><br />
+      <img src="autodoc/image/difference.png" width="100%" alt="Difference">
+    </td>
+    <td align="center">
+      <b>Histogram</b><br />
+      <img src="autodoc/image/histograms.png" width="100%" alt="Histogram">
+    </td>
+  </tr>
+</table>
+
 # Setup
 
 ## Bat scripts & ENV variables (Windows only, so no .sh scripts available)
@@ -61,30 +86,7 @@ Unreal has additional probe scripts for diagnostics.
 
 `env\rg-python.bat isaac\analysis\compare_frame.py --mode <MRQ_PathTracer (default) | MRQ_LumenHW | MRQ_LumenSW | MRQ_NoGI>` to get analysis output in `results\analysis\compare` folder.
 
-### compare_frame.py script result:
-
-<table>
-  <tr>
-    <td align="center">
-      <b>Isaac RTX PT</b><br />
-      <img src="autodoc/image/isaac_display.png" width="100%" alt="Isaac RTX PT">
-    </td>
-    <td align="center">
-      <b>UE Path Tracer</b><br />
-      <img src="autodoc/image/unreal_display.png" width="100%" alt="UE Path Tracer">
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <b>Difference</b><br />
-      <img src="autodoc/image/difference.png" width="100%" alt="Difference">
-    </td>
-    <td align="center">
-      <b>Histogram</b><br />
-      <img src="autodoc/image/histograms.png" width="100%" alt="Histogram">
-    </td>
-  </tr>
-</table>
+Script result example in Overview section.
 
 # Implementation Log
 
