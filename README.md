@@ -117,7 +117,23 @@ Solution: Disable UsePrimKindsToCollapsing on USD stage actor.
 This will force the engine to load every section as a separate mesh.
 
 ### 4. Unreal lightning import is not match with Isaac because of additional gaming renderer properties. 
-Custom RenderGapUSD Unreal module to fix the import. Isaac uses unnormalized power, but unreal uses normalized only.
-Also, attenation for the full area is set up.
+ * Unreal reads light brightness as unnormalized and converts it to normalized form, so the USD scene must always author unnormalized power. 
+
+ * Unused light sources must be disabled via the `active` flag, not variants, or the engines diverge. 
+
+ * Gaming light should be restricted by distance. However, Isaac Sim simulates the light across the whole scene. There is no AttenuationRadius property for a USD scene. The custom Unreal module setup a default huge AttenuationRadius automatically. 
+
+ * The most important one: Unreal has an engine-related light implementation anomaly. Unreal renders rect lights at twice their authored brightness. Deep in the engine, the light color is divided by `0.5 * width * height` to get radiance, and nothing downstream ever takes that 0.5 back out. That factor of two hides in your renders until you go digging through the engine source with a frame comparison on the other hand. This was also fixed by the custom importing module, which divides imported brightness by 2 automatically.
+
+see ```autodoc/usd_transfer_losses_log.md```.
 
 ### 5. Camera settings export as USD object.
+Both engines implement the same physical exposure model: ISO, shutter time, f-stop, exposure compensation. You need to author every attribute explicitly as the defaults of Unreal and Isaac are different. However, if the input parameters are the same, the math cancels out exactly and both renders land at the same brightness. 
+
+ Distances are scaled by a factor of 100 on import. It hits focalLength and both apertures, so the FOV ratio would survive. The target aspect ratio is 4:3, from the target image size 800x600 setup: focalLength, horizontalAperture, verticalAperture. 
+
+ Isaac-only properties: the omni:rtx:autoExposure:* block (Kit's histogram auto-exposure, kept disabled here) and shutter:open / shutter:close, which are motion blur, not exposure. Unreal reads none of them. And I don't need them anyway. 
+
+ Several parameters needed to be manually modified with the custom Unreal module. Unreal reads only the plain exposure attribute (as AutoExposureBias) and drops exposure:time, :iso, :fStop and :responsivity entirely. The custom Unreal module maps them after the stock conversion. 
+ 
+see ```autodoc/usd_transfer_losses_log.md```.
